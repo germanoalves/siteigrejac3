@@ -15,7 +15,7 @@
 		"@typescript-eslint/eslint-plugin": "^5.50.0",
 		"@typescript-eslint/parser": "^5.50.0",
 		"astro": "2.0.6",
-		"astro-compress": "^1.1.29",
+		"astro-compress": "2.0.5",
 		"astro-seo": "^0.7.0",
 		"autoprefixer": "^10.4.14",
 		"eslint": "^8.33.0",
