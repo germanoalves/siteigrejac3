@@ -1,33 +1,37 @@
 ---
-import BtnLink from "../shared/BtnLink.astro";
-import Container from "../shared/Container.astro";
-import Navitem from "../shared/Navitem.astro";
+import BtnLink from "../shared/BtnLink.astro"
+import Container from "../shared/Container.astro"
+import Navitem from "../shared/Navitem.astro"
 // import imgTop from '../../../assets/img/img-top.jpg';
-import imgTop from "@img/img-top.jpg";
+import imgTop from "@img/img-top.jpg"
 
 const navItems = [
   {
-    href: "#",
-    text: "Home",
+    href: "/",
+    text: "Home"
   },
   {
     href: "/sobre",
-    text: "A Igreja",
+    text: "A Igreja"
   },
   {
-    href: "#about-us",
-    text: "Programação",
+    href: "/programacao",
+    text: "Programação"
   },
   {
     href: "#features",
-    text: "Contato",
-  },
-];
+    text: "Contato"
+  }
+]
 ---
 
-<div class="h-96 w-full absolute inset-x-0 z-10 bg-[url('../assets/img/img-top.jpg')] bg-no-repeat bg-center bg-cover">
+<div
+  class="h-96 w-full absolute inset-x-0 z-10 bg-[url('../assets/img/img-top.jpg')] bg-no-repeat bg-center bg-cover"
+>
   <div class="bg-black opacity-40 w-full h-full relative"></div>
-  <header class="absolute bottom-0 left-0 right-0 pt-6 h-full w-full overflow-hidden bg-fixed">
+  <header
+    class="absolute bottom-0 left-0 right-0 pt-6 h-full w-full overflow-hidden bg-fixed"
+  >
     <Container className="relative z-50">
       <nav class="w-full flex justify-between gap-6 relative">
         <!-- logo -->
@@ -61,14 +65,14 @@ const navItems = [
         </div>
         <div
           data-navbar
-          class="flex h-0  overflow-hidden lg:!h-auto lg:scale-y-100 duration-300 ease-linear flex-col gap-y-6 gap-x-4 lg:flex-row w-full lg:justify-between lg:items-center absolute lg:relative top-full lg:top-0 bg-body lg:bg-transparent border-x border-x-box-border lg:border-x-0"
+          class="flex h-0 overflow-hidden lg:!h-auto lg:scale-y-100 duration-300 ease-linear flex-col gap-y-6 gap-x-4 lg:flex-row w-full lg:justify-between lg:items-center absolute lg:relative top-full lg:top-0 bg-body lg:bg-transparent border-x border-x-box-border lg:border-x-0"
         >
           <ul
             class="border-t font-open border-box-border lg:border-t-0 px-6 lg:px-0 pt-6 lg:pt-0 flex flex-col lg:flex-row gap-y-4 gap-x-3 text-lg text-heading-2 w-full lg:justify-center lg:items-center"
           >
             {
               navItems.map((item) => {
-                return <Navitem {...item} />;
+                return <Navitem {...item} />
               })
             }
           </ul>
@@ -144,11 +148,16 @@ const navItems = [
         </div>
       </nav>
     </Container>
-    <section class="flex flex-col justify-t items-top text-center mt-20">
-      <h1 class=" uppercase text-white text-5xl font-extrabold font-rubbik">Até aqui nos ajudou o Senhor</h1>
-      <span class="text-white mt-2">-| conheça a Verdade e ela te libertará! João 8:32 |-</span>
+    <section
+      class="flex flex-col justify-t items-top text-center mt-7 sm:mt-20"
+    >
+      <h1 class="uppercase text-white text-5xl font-extrabold font-rubbik">
+        Até aqui nos ajudou o Senhor
+      </h1>
+      <span class="text-white mt-2"
+        >-| conheça a Verdade e ela te libertará! João 8:32 |-</span
+      >
     </section>
-    
   </header>
 </div>
 

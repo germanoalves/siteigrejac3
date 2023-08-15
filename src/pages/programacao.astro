@@ -1,0 +1,160 @@
+---
+// Component imports
+import { Layout } from "@globals"
+---
+
+<Layout title="A Família C3">
+  <section
+    class="py-8 px-6 flex-1 flex flex-col justify-center items-center z-20 mt-96"
+  >
+    <div class="grid grid-cols-3 gap-6">
+      <div id="titleContainer"></div>
+      <div id="contentContainer"></div>
+      <div id="videoContainer"></div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  async function fetchData() {
+    try {
+      const response = await fetch(
+        "https://igreja.natuspixel.com.br/svr/wp-json/wp/v2/posts?categories=3"
+      )
+      const data = await response.json()
+
+      data.forEach((item) => {
+        const grid = document.querySelector(".grid")
+
+        const cardDiv = document.createElement("div")
+        cardDiv.classList.add(
+          "bg-white",
+          "p-3",
+          "rounded-lg",
+          "shadow-xl",
+          "dark:bg-gray-500"
+        )
+
+        const titleDiv = document.createElement("div")
+        titleDiv.classList.add(
+          "text-lg",
+          "font-semibold",
+          "uppercase",
+          "font-poppins",
+          "mt-1",
+          "dark:text-white"
+        )
+        titleDiv.textContent = item.title.rendered
+
+        const contentDiv = document.createElement("div")
+        contentDiv.classList.add("mt-2")
+        contentDiv.innerHTML = item.content.rendered
+
+        const youtubeURL = item.acf.url_pregacao
+        const videoId = getYoutubeVideoId(youtubeURL)
+
+        if (videoId) {
+          const youtubeIFrame = document.createElement("iframe")
+          youtubeIFrame.src = `https://www.youtube.com/embed/${videoId}`
+          youtubeIFrame.width = "100%"
+          youtubeIFrame.height = "360"
+          youtubeIFrame.allowFullscreen = true
+
+          cardDiv.appendChild(youtubeIFrame)
+        }
+
+        cardDiv.appendChild(titleDiv)
+        cardDiv.appendChild(contentDiv)
+
+        grid.appendChild(cardDiv)
+      })
+    } catch (error) {
+      console.error("Erro ao buscar dados:", error)
+    }
+  }
+
+  function getYoutubeVideoId(url) {
+    const match = url.match(/v=([^&]+)/)
+    return match ? match[1] : null
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    fetchData()
+  })
+</script>
+
+<!-- ---
+// Component imports
+import { Layout } from "@globals"
+---
+
+<Layout title="A Família C3">
+  <section
+    class="py-8 px-6 flex-1 flex flex-col justify-center items-center z-20 mt-96"
+  >
+    <div>
+      <div id="titleContainer"></div>
+      <div id="contentContainer"></div>
+      <div id="videoContainer"></div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  async function fetchData() {
+    try {
+      const response = await fetch(
+        "https://igreja.natuspixel.com.br/svr/wp-json/wp/v2/posts?categories=3"
+      )
+      const data = await response.json()
+
+      const dataContainer = document.getElementById("dataContainer")
+
+      data.forEach((item) => {
+        const itemDiv = document.createElement("div")
+        itemDiv.classList.add("item-container")
+
+        const itemTitleAndContentDiv = document.createElement("div")
+        itemTitleAndContentDiv.classList.add("item-title-content-container")
+
+        const titleDiv = document.createElement("div")
+        titleDiv.classList.add("title-container")
+        titleDiv.textContent = item.title.rendered
+        itemTitleAndContentDiv.appendChild(titleDiv)
+
+        const contentDiv = document.createElement("div")
+        contentDiv.classList.add("content-container")
+        contentDiv.innerHTML = item.content.rendered
+        itemTitleAndContentDiv.appendChild(contentDiv)
+
+        const youtubeURL = item.acf.url_pregacao
+        const videoId = getYoutubeVideoId(youtubeURL)
+
+        if (videoId) {
+          const youtubeIFrame = document.createElement("iframe")
+          youtubeIFrame.src = `https://www.youtube.com/embed/${videoId}`
+          youtubeIFrame.width = "640"
+          youtubeIFrame.height = "360"
+          youtubeIFrame.allowFullscreen = true
+
+          itemTitleAndContentDiv.appendChild(youtubeIFrame)
+        }
+
+        itemDiv.appendChild(itemTitleAndContentDiv)
+        dataContainer.appendChild(itemDiv)
+      })
+    } catch (error) {
+      console.error("Erro ao buscar dados:", error)
+    }
+  }
+
+  function getYoutubeVideoId(url) {
+    const match = url.match(/v=([^&]+)/)
+    return match ? match[1] : null
+  }
+
+  // Chama a função de busca de dados quando a página é carregada
+  document.addEventListener("DOMContentLoaded", () => {
+    fetchData()
+  })
+</script> -->
