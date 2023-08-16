@@ -33,14 +33,30 @@ import { Layout } from "@globals"
         cardDiv.classList.add(
           "flex",
           "flex-col",
+          "relative",
           "bg-white",
           "p-3",
-          "mb-2",
+          "mb-4",
           "sm:mb-0",
           "rounded-lg",
           "shadow-xl",
           "dark:bg-gray-500"
         )
+
+        const ribbonDiv = document.createElement("div")
+        ribbonDiv.classList.add(
+          "absolute",
+          "top-0",
+          "right-0",
+          "transform",
+          "bg-blue-500",
+          "text-white",
+          "px-4",
+          "py-0",
+          "rotate-180"
+        )
+        ribbonDiv.textContent = ":)"
+        cardDiv.appendChild(ribbonDiv)
 
         const titleDiv = document.createElement("div")
         titleDiv.classList.add(
@@ -48,13 +64,13 @@ import { Layout } from "@globals"
           "font-semibold",
           "uppercase",
           "font-poppins",
-          "mt-1",
+          "mt-3",
           "dark:text-white"
         )
         titleDiv.textContent = item.title.rendered
 
         const contentDiv = document.createElement("div")
-        contentDiv.classList.add("mt-2", "b-0")
+        contentDiv.classList.add("mt-2", "b-0", "mb-6")
         contentDiv.innerHTML = item.content.rendered
 
         const dataEvento = item.acf.data_evento
@@ -66,9 +82,10 @@ import { Layout } from "@globals"
           "mt-auto",
           "border-t-2",
           "border-gray-100",
-          "border-solid"
+          "border-solid",
+          "dark:border-gray-600"
         )
-        dataEventoDiv.innerHTML = formattedDate
+        dataEventoDiv.innerHTML = `<span class='font-bold'>Data Evento:</span> ${formattedDate}`
 
         cardDiv.appendChild(titleDiv)
         cardDiv.appendChild(contentDiv)
