@@ -19,6 +19,8 @@ import { Layout } from "@globals"
 </Layout>
 
 <script>
+  import bookmark from "../../src/assets/img/bookmark.png"
+
   async function fetchData() {
     try {
       const response = await fetch(
@@ -35,6 +37,11 @@ import { Layout } from "@globals"
           "flex-col",
           "relative",
           "bg-white",
+          "border-r-1",
+          "border-l-1",
+          "border-b-2",
+          "border-solid",
+          "border-gray-300",
           "p-3",
           "mb-4",
           "sm:mb-0",
@@ -49,28 +56,32 @@ import { Layout } from "@globals"
           "top-0",
           "right-0",
           "transform",
-          "bg-blue-500",
           "text-white",
-          "px-4",
-          "py-0",
-          "rotate-180"
+          "bg-gray-200",
+          "rounded-bl-lg",
+          "rounded-tr-lg",
+          "px-3",
+          "py-1",
+          "-rotate-180",
+          "dark:bg-gray-700"
         )
-        ribbonDiv.textContent = ":)"
+        ribbonDiv.innerHTML = `<img src="${bookmark}" width='20' height='20'>`
         cardDiv.appendChild(ribbonDiv)
 
         const titleDiv = document.createElement("div")
         titleDiv.classList.add(
           "text-lg",
           "font-semibold",
+          "text-gray-700",
           "uppercase",
-          "font-poppins",
-          "mt-3",
+          "font-rubbik",
+          "mt-6",
           "dark:text-white"
         )
         titleDiv.textContent = item.title.rendered
 
         const contentDiv = document.createElement("div")
-        contentDiv.classList.add("mt-2", "b-0", "mb-6")
+        contentDiv.classList.add("mt-2", "b-0", "mb-6", "text-gray-500")
         contentDiv.innerHTML = item.content.rendered
 
         const dataEvento = item.acf.data_evento
@@ -85,7 +96,7 @@ import { Layout } from "@globals"
           "border-solid",
           "dark:border-gray-600"
         )
-        dataEventoDiv.innerHTML = `<span class='font-bold'>Data Evento:</span> ${formattedDate}`
+        dataEventoDiv.innerHTML = `<span class='font-bold text-gray-500'>Data Evento:</span> <span class='text-gray-500'>${formattedDate}</span>`
 
         cardDiv.appendChild(titleDiv)
         cardDiv.appendChild(contentDiv)
