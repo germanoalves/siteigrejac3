@@ -7,13 +7,21 @@ import { Layout } from "@globals"
   <section
     class="py-8 px-6 flex-1 flex flex-col justify-center items-center z-20 mt-96"
   >
-    <div
-      id="lista_lives"
-      class="grid-cols-1 sm:grid sm:grid-cols-3 xl:grid-cols-3 xl:grid gap-6"
-    >
-      <div id="titleContainer"></div>
-      <div id="contentContainer"></div>
-      <div id="videoContainer"></div>
+    <div class="max-w-4xl text-left">
+      <h2
+        class="text-gray-700 text-3xl font-extrabold font-rubbik mb-5 border-l-4 border-gray-700 pl-2 ml-0 my-6 dark:text-white dark:border-white"
+      >
+        Nossos Cultos
+      </h2>
+
+      <div
+        id="lista_lives"
+        class="grid-cols-1 sm:grid sm:grid-cols-1 xl:grid-cols-3 xl:grid gap-6"
+      >
+        <div id="titleContainer"></div>
+        <div id="contentContainer"></div>
+        <div id="videoContainer"></div>
+      </div>
     </div>
   </section>
 </Layout>
@@ -44,15 +52,22 @@ import { Layout } from "@globals"
         titleDiv.classList.add(
           "text-lg",
           "font-semibold",
+          "text-gray-700",
           "uppercase",
-          "font-poppins",
-          "mt-1",
+          "font-rubbik",
+          "mt-6",
           "dark:text-white"
         )
         titleDiv.textContent = item.title.rendered
 
         const contentDiv = document.createElement("div")
-        contentDiv.classList.add("mt-2")
+        contentDiv.classList.add(
+          "mt-2",
+          "b-0",
+          "mb-6",
+          "text-gray-500",
+          "dark:text-gray-800"
+        )
         contentDiv.innerHTML = item.content.rendered
 
         const youtubeURL = item.acf.url_pregacao

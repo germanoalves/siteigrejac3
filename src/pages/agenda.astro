@@ -3,17 +3,22 @@
 import { Layout } from "@globals"
 ---
 
-<Layout title="Nossos Cultos - C3">
+<Layout title="Nossa Agenda - C3">
   <section
-    class="py-8 px-6 flex-1 flex flex-col justify-center items-center z-20 mt-96"
+    class="py-8 flex flex-col justify-center items-center z-20 mt-96 overflow-hidden"
   >
-    <div
-      id="lista_lives"
-      class="grid-cols-1 sm:grid sm:grid-cols-3 xl:grid-cols-3 xl:grid gap-6"
-    >
-      <div id="titleContainer"></div>
-      <div id="contentContainer"></div>
-      <div id="dataEventoDiv"></div>
+    <div class="text-left">
+      <h2
+        class="text-gray-700 text-3xl font-extrabold font-rubbik mb-5 border-l-4 border-gray-700 pl-2 ml-0 my-6 dark:text-white dark:border-white"
+      >
+        Nossa Agenda
+      </h2>
+
+      <div id="lista_agenda" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div id="titleContainer"></div>
+        <div id="contentContainer"></div>
+        <div id="dataEventoDiv"></div>
+      </div>
     </div>
   </section>
 </Layout>
@@ -29,7 +34,7 @@ import { Layout } from "@globals"
       const data = await response.json()
 
       data.forEach((item) => {
-        const grid = document.querySelector("#lista_lives")
+        const grid = document.querySelector("#lista_agenda")
 
         const cardDiv = document.createElement("div")
         cardDiv.classList.add(
@@ -81,7 +86,13 @@ import { Layout } from "@globals"
         titleDiv.textContent = item.title.rendered
 
         const contentDiv = document.createElement("div")
-        contentDiv.classList.add("mt-2", "b-0", "mb-6", "text-gray-500")
+        contentDiv.classList.add(
+          "mt-2",
+          "b-0",
+          "mb-6",
+          "text-gray-500",
+          "dark:text-gray-800"
+        )
         contentDiv.innerHTML = item.content.rendered
 
         const dataEvento = item.acf.data_evento
@@ -96,7 +107,7 @@ import { Layout } from "@globals"
           "border-solid",
           "dark:border-gray-600"
         )
-        dataEventoDiv.innerHTML = `<span class='font-bold text-gray-500'>Data Evento:</span> <span class='text-gray-500'>${formattedDate}</span>`
+        dataEventoDiv.innerHTML = `<span class='font-bold text-gray-500 dark:text-gray-800'>Data Evento:</span> <span class='text-gray-500 dark:text-white'>${formattedDate}</span>`
 
         cardDiv.appendChild(titleDiv)
         cardDiv.appendChild(contentDiv)
