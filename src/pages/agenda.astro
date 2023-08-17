@@ -25,6 +25,8 @@ import { Layout } from "@globals"
 
 <script>
   import bookmark from "../../src/assets/img/bookmark.png"
+  import bgagenda from "../assets/img/worship.png"
+  import calendar from "../assets/img/calendar.png"
 
   async function fetchData() {
     try {
@@ -55,6 +57,9 @@ import { Layout } from "@globals"
           "dark:bg-gray-500"
         )
 
+        const cardContentDiv = document.createElement("div") //novo
+        cardContentDiv.classList.add("flex", "flex-row", "flex-grow")
+
         const ribbonDiv = document.createElement("div")
         ribbonDiv.classList.add(
           "absolute",
@@ -68,7 +73,7 @@ import { Layout } from "@globals"
           "px-3",
           "py-1",
           "-rotate-180",
-          "dark:bg-gray-700"
+          "dark:bg-gray-600"
         )
         ribbonDiv.innerHTML = `<img src="${bookmark}" width='20' height='20'>`
         cardDiv.appendChild(ribbonDiv)
@@ -95,23 +100,44 @@ import { Layout } from "@globals"
         )
         contentDiv.innerHTML = item.content.rendered
 
+        cardContentDiv.appendChild(contentDiv) //novo
+
         const dataEvento = item.acf.data_evento
         const parts = dataEvento.split("-") // Divide a data em partes [ano, mês, dia]
         const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}` // Formata como "DD-MM-YYYY"
 
         const dataEventoDiv = document.createElement("div")
         dataEventoDiv.classList.add(
-          "mt-auto",
+          //"mt-auto",
+          "h-full",
           "border-t-2",
           "border-gray-100",
           "border-solid",
           "dark:border-gray-600"
         )
-        dataEventoDiv.innerHTML = `<span class='font-bold text-gray-500 dark:text-gray-800'>Data Evento:</span> <span class='text-gray-500 dark:text-white'>${formattedDate}</span>`
+        dataEventoDiv.innerHTML = `<div class="flex flex-row items-center"><img src="${calendar}" class="w-4 h-4 mr-1" /><span class='font-bold text-gray-500 dark:text-gray-800 mr-1'>Data Evento: </span> <span class='text-gray-500 dark:text-white'>${formattedDate}</span></div>`
+
+        const imageDiv = document.createElement("div")
+        imageDiv.classList.add(
+          "max-w-xs",
+          "h-full",
+          "mt-auto",
+          "rounded-lg",
+          "overflow-clip",
+          "mt-3"
+        ) // classes da imagem
+
+        const image = document.createElement("img")
+        image.src = bgagenda
+        image.alt = "Agenda Image"
 
         cardDiv.appendChild(titleDiv)
         cardDiv.appendChild(contentDiv)
         cardDiv.appendChild(dataEventoDiv)
+
+        imageDiv.appendChild(image)
+        cardDiv.appendChild(imageDiv)
+        cardDiv.appendChild(cardContentDiv)
 
         grid.appendChild(cardDiv)
       })
