@@ -1,5 +1,16 @@
+---
+import fb from "../../../assets/img/facebook.png"
+import int from "../../../assets/img/instagram.png"
+import zap from "../../../assets/img/whatsapp.png"
+---
+
 <div
-  class="w-full bg-slate-600 text-center text-white py-3 dark:border-t-2 border-solid border-white"
+  class="flex flex-col justify-center items-center w-full bg-slate-600 text-center text-white py-3 dark:border-t-2 border-solid border-white"
 >
   <span>Todos os direitos reservados.</span>
+  <div class="flex flex-row mt-3">
+    <a href="#"><img src={fb} class="w-8 h-8 mx-1" /></a>
+    <a href="#"><img src={int} class="w-8 h-8 mx-2" /></a>
+    <a href="#"><img src={zap} class="w-8 h-8 mx-2" /></a>
+  </div>
 </div>
