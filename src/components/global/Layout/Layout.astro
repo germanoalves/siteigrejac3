@@ -177,7 +177,7 @@ const {
       // This is a hack to get vite-plugin-pwa to generate a sw.js file.
       // Do not remove this script tag.
     </script>
-    <script>
+    <!-- <script>
       const switchTheme = document.querySelector(
         "[data-switch-theme]"
       ) as HTMLButtonElement
@@ -248,52 +248,53 @@ const {
           navbar.style.height = "0px"
         })
       }
-    </script>
+    </script> -->
     <Footer />
-  </body><style is:global>
-    :root {
-      --color-bg: 255 255 255;
-      --color-border: 255 255 255;
-      --color-box: 255 255 255;
-      --box-border: 229 231 235;
-      --box-sd: 226 232 240 / 0.5;
-      --heading-1: 23 37 84;
-      --heading-2: 31 41 55;
-      --heading-3: 55 65 81;
-    }
+    <style is:global>
+      :root {
+        --color-bg: 255 255 255;
+        --color-border: 255 255 255;
+        --color-box: 255 255 255;
+        --box-border: 229 231 235;
+        --box-sd: 226 232 240 / 0.5;
+        --heading-1: 23 37 84;
+        --heading-2: 31 41 55;
+        --heading-3: 55 65 81;
+      }
 
-    .dark {
-      --color-bg: 3 7 18;
-      --color-box: 17 24 39;
-      --box-border: 243 244 246/0.1;
-      --box-sd: transparent;
+      .dark {
+        --color-bg: 3 7 18;
+        --color-box: 17 24 39;
+        --box-border: 243 244 246/0.1;
+        --box-sd: transparent;
 
-      --heading-1: 255 255 255;
-      --heading-2: 243 244 246;
-      --heading-3: 209 213 219;
-    }
+        --heading-1: 255 255 255;
+        --heading-2: 243 244 246;
+        --heading-3: 209 213 219;
+      }
 
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: "Raleway", sans-serif;
-    }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Raleway", sans-serif;
+      }
 
-    [data-toggle-nav][data-open-nav="true"] #line1 {
-      transform: translateY(0.375rem) rotate(40deg);
-    }
-    [data-toggle-nav][data-open-nav="true"] #line2 {
-      transform: scaleX(0);
-      opacity: 0;
-    }
-    [data-toggle-nav][data-open-nav="true"] #line3 {
-      transform: translateY(-0.375rem) rotate(-40deg);
-    }
+      [data-toggle-nav][data-open-nav="true"] #line1 {
+        transform: translateY(0.375rem) rotate(40deg);
+      }
+      [data-toggle-nav][data-open-nav="true"] #line2 {
+        transform: scaleX(0);
+        opacity: 0;
+      }
+      [data-toggle-nav][data-open-nav="true"] #line3 {
+        transform: translateY(-0.375rem) rotate(-40deg);
+      }
 
-    [data-nav-overlay][data-is-visible="true"] {
-      visibility: visible;
-      display: flex;
-    }
-  </style>
+      [data-nav-overlay][data-is-visible="true"] {
+        visibility: visible;
+        display: flex;
+      }
+    </style>
+  </body>
 </html>
