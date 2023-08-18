@@ -177,7 +177,7 @@ const {
       // This is a hack to get vite-plugin-pwa to generate a sw.js file.
       // Do not remove this script tag.
     </script>
-    <!-- <script>
+    <script>
       const switchTheme = document.querySelector(
         "[data-switch-theme]"
       ) as HTMLButtonElement
@@ -215,8 +215,7 @@ const {
           }
         })
       }
-    </script>
-    <script>
+
       const toggleMenu = document.querySelector(
         "[data-toggle-nav]"
       ) as HTMLButtonElement
@@ -248,7 +247,8 @@ const {
           navbar.style.height = "0px"
         })
       }
-    </script> -->
+    </script>
+
     <Footer />
     <style is:global>
       :root {
